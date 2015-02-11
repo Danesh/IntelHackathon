@@ -25,7 +25,6 @@ gulp.task('inject:build',function() {
   var foldersBuild = config.folders.build;
   var files = getVendorFiles( foldersBuild );
   return gulp.src( foldersBuild + '/' + filesHtml )
-    .pipe( gulpInject( gulp.src( files ), {name:'vendor', relative: true}))
     .pipe( gulpInject( gulp.src( foldersBuild + '/app/' + filesJs).pipe(angularFilesort()), {name:'app', relative: true}))
     .pipe( gulpInject( gulp.src( foldersBuild + '/' + filesCss), {relative: true}))
     .pipe( gulp.dest( foldersBuild ));

@@ -39,10 +39,6 @@ gulp.task('copy:build:assets', function() {
   return gulp.src( folders.src + '/assets/**' )
     .pipe( gulp.dest( folders.build + '/assets') );
 });
-gulp.task('copy:build:polymer', function() {
-  return gulp.src( vendor.polymer.files, { base: './components/bower_components' } )
-    .pipe( gulp.dest( folders.build + '/' + vendor.polymer.target ) );
-});
 
 gulp.task('copy:dist', function() {
    return runSequence([
