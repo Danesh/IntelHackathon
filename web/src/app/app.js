@@ -2,7 +2,8 @@ angular.module( 'angularSeed', [
   'common-templates',
   'angularSeed.home',
   'angularSeed.header',
-  'ui.router'
+  'ui.router',
+  'webcam'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
