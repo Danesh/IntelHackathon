@@ -13,7 +13,11 @@ $http) {
   }
 
   $scope.tapscreen = function() {
-    $http.post('http://localhost:8080/monkey/tap');
+    $http.post('/monkey/tap');
+  }
+
+  $scope.flingShit = function() {
+    $http.post('/monkey/flingshit');
   }
 
   $scope.postMoveTo = function() {

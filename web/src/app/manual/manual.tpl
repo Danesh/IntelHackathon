@@ -14,6 +14,8 @@
         <div class="row" style="margin-top: 10px; margin-left: 10px;">
             <button class="btn btn-success"
             type="button">Tap Screen</button>
+            <button class="btn btn-success" ng-click="flingShit()"
+            type="button">Fling Shit</button>
             <button class="btn btn-success"
             type="button">Rotate Portrait</button>
             <button class="btn btn-success"
