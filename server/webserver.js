@@ -48,7 +48,7 @@ app.get('/uptime', function(request, response) {
 /// MONKEY BOT ENDPOINTS //
 ///////////////////////////
 
-var adb = require('./logcat.js');
+var adb = require('./adb.js');
 
 app.get('/logcat', function(req, res) {
   res.send(adb.logcat.getLogcat());
