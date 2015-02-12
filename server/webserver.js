@@ -42,4 +42,14 @@ app.get('/uptime', function(request, response) {
   });
 });
 
+///////////////////////////
+/// MONKEY BOT ENDPOINTS //
+///////////////////////////
+
+var logcat = require('./logcat.js').Logcat;
+
+app.get('/logcat', function(req, res) {
+  res.send(logcat.getLogcat());
+})
+
 app.listen(8080);
