@@ -209,19 +209,19 @@ module.run(['$templateCache', function($templateCache) {
     '        </div>\n' +
     '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
     '            <button class="btn btn-success"\n' +
-    '            type="button">Tap Screen</button>\n' +
+    '            type="button" ng-click="tapscreen()">Tap Screen</button>\n' +
     '            <button class="btn btn-success"\n' +
     '            type="button">Rotate Portrait</button>\n' +
     '            <button class="btn btn-success"\n' +
     '            type="button">Rotate Landscape</button>\n' +
     '        </div>\n' +
     '        <div class="row" style="margin-left: 10px;">\n' +
-    '            <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
+    '            <!-- <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
     '                background-color: transparent;\n' +
     '                border: 0px none transparent;\n' +
     '                padding: 0px;\n' +
     '                overflow: hidden;\n' +
-    '                scrolling: no"></iframe>\n' +
+    '                scrolling: no"></iframe> -->\n' +
     '        </div>\n' +
     '    </div>\n' +
     '</div>\n' +
