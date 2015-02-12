@@ -48,20 +48,24 @@ app.get('/uptime', function(request, response) {
 /// MONKEY BOT ENDPOINTS //
 ///////////////////////////
 
-var logcat = require('./logcat.js').logcat;
+var adb = require('./logcat.js');
 
 app.get('/logcat', function(req, res) {
-  res.send(logcat.getLogcat());
+  res.send(adb.logcat.getLogcat());
+})
+
+app.get('/power', function(req, res) {
+  adb.batteryStats.getChargeLevel(function(level) { res.send(level); });
 })
 
 io.on('connection', function (socket) {
-  logcat.onConnect(socket);
+  adb.logcat.onConnect(socket);
 });
 
 io.on('disconnect', function () {
      //This isn't working
      console.log("Socket disconnected");
-     logcat.onDisconnect();
+     adb.logcat.onDisconnect();
  });
 
 server.listen(8080);
