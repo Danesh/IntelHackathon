@@ -190,23 +190,21 @@ char* monkey_get_stats(void) {
 }
 
 int monkey_fling_shit(void) {
-	return 0;
+	monkey_start();
+	sleep(1);
+	mraa_pwm_pulsewidth_us(arm1Context, ((ARM1_MAX_PULSE_WIDTH - ARM1_MIN_PULSE_WIDTH) / 2));
+	mraa_pwm_pulsewidth_us(arm2Context, ((ARM2_MAX_PULSE_WIDTH - ARM2_MIN_PULSE_WIDTH) / 2));
+	sleep(1);
+	monkey_tap();
+	sleep(1);
+	mraa_pwm_pulsewidth_us(arm1Context, ((ARM1_MAX_PULSE_WIDTH - ARM1_MIN_PULSE_WIDTH) / 3));
+	mraa_pwm_pulsewidth_us(arm2Context, ((ARM2_MAX_PULSE_WIDTH - ARM2_MIN_PULSE_WIDTH) / 4));
+	sleep(1);
+	monkey_tap();
+	sleep(1);
+	monkey_start();
+	sleep(1);
+	monkey_stop();
+
+	return 1;
 }
-
-//main(int argc, char **argv)
-//{
-//	int i;
-//    mraa_pwm_context pwm;
-//    pwm = mraa_pwm_init(3);
-//    mraa_pwm_period_ms(pwm, 20);
-//    mraa_pwm_enable(pwm, 1);
-//    while (1) {
-//        for (i = 400; i < 1900; i++) {
-//        	mraa_pwm_pulsewidth_us(pwm, i);
-//            usleep(10000);
-//        }
-//    }
-//
-//    return 0;
-//}
-

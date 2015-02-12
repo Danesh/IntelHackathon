@@ -7,8 +7,8 @@ var io = require('socket.io')(server);
 var app = express();
 app.use(express.json());
 app.use(express.compress());
-console.log(__dirname + '/build');
-app.use(express.static(__dirname + '/build/'));
+console.log(__dirname + '/web');
+app.use(express.static(__dirname + '/web'));
 
 var uptime;
 
