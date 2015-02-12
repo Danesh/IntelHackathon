@@ -7,7 +7,7 @@ angular.module( 'cyngnIoT.header', [])
       return 'active';
     }
     else {
-      return '';
+      return 'none';
     }
   }
 }]);
