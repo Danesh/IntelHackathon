@@ -2,7 +2,7 @@ angular.module( 'cyngnIoT', [
   'common-templates',
   'cyngnIoT.home',
   'cyngnIoT.header',
-  'ui.router'
+  'ui.router',
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
