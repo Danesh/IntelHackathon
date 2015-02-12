@@ -83,17 +83,19 @@ var monkey = require('../hydra/monkey/monkeybot.js').monkeybot;
 // Script runner
 app.post('/monkey/script', function(req, res) {
     //res.send(monkey.monkey_run_script() ? 200 : 500);
-    var scr = "monkey_fling_shit";
-    res.status(200)
-    res.write("Sending script to monkey bot...<br/>")
-    monkey.monkey_run_script(
-        scr,
-        function(progress_str) { // Progress function
-            res.write(progress_str + "<br/>")
-        },
-        function() { // done function
-            res.end();
-        })
+    // var scr = "monkey_fling_shit";
+    // res.status(200)
+    // res.write("Sending script to monkey bot...<br/>")
+    // monkey.monkey_run_script(
+    //     scr,
+    //     function(progress_str) { // Progress function
+    //         res.write(progress_str + "<br/>")
+    //     },
+    //     function() { // done function
+    //         res.end();
+    //     })
+
+  res.sendStatus(monkey.monkey_fling_shit() ? 200 : 500);
 })
 
 // Individual commands
