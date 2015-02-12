@@ -199,12 +199,12 @@ module.run(['$templateCache', function($templateCache) {
     '    <div id="control-container">\n' +
     '        <div class="row" style="margin-left: 10px;">\n' +
     '            <label style="color: black; margin-right: 10px;">X Position:</label>\n' +
-    '            <input type="text" style="margin-right: 10px;" placeholder="">\n' +
+    '            <input type="text" style="margin-right: 10px;" id="x-pos" placeholder="">\n' +
     '            <label style="color: black; margin-right: 10px;">Y Position:</label>\n' +
-    '            <input type="text" style="margin-right: 10px;" placeholder="">\n' +
+    '            <input type="text" style="margin-right: 10px;" id="y-pos" placeholder="">\n' +
     '        </div>\n' +
     '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
-    '            <button class="btn btn-primary"\n' +
+    '            <button class="btn btn-primary" ng-click="postMoveTo()"\n' +
     '            type="button">Move Stylus</button>\n' +
     '        </div>\n' +
     '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
