@@ -1,6 +1,7 @@
 angular.module( 'cyngnIoT', [
   'common-templates',
   'cyngnIoT.header',
+  'cyngnIoT.manual',
   'ui.router',
 ])
 
@@ -87,7 +88,8 @@ angular.module( 'cyngnIoT', [
         controller: 'HeaderCtrl'
       },
       'main': {
-        templateUrl: 'app/manual/manual.tpl'
+        templateUrl: 'app/manual/manual.tpl',
+        controller: 'ManualCtrl'
       },
       'footer': {
         templateUrl: 'app/footer/footer.tpl'

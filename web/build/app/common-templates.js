@@ -61,21 +61,6 @@ try {
   module = angular.module('common-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('app/manual/manual.tpl',
-    '<div class="cyngnmodule container-fluid">\n' +
-    '<h1>manual controls</h1>\n' +
-    '</div>\n' +
-    '');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('common-templates');
-} catch (e) {
-  module = angular.module('common-templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('app/header/header.tpl',
     '<nav class="navbar navbar-default" role="navigation">\n' +
     '    <div class="container-fluid">\n' +
@@ -100,6 +85,49 @@ module.run(['$templateCache', function($templateCache) {
     '        </div>\n' +
     '    </div>\n' +
     '</nav>\n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('common-templates');
+} catch (e) {
+  module = angular.module('common-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('app/manual/manual.tpl',
+    '<div class="cyngnmodule container-fluid">\n' +
+    '<h1>Manual Controls</h1>\n' +
+    '    <div id="control-container">\n' +
+    '        <div class="row" style="margin-left: 10px;">\n' +
+    '            <label style="color: black; margin-right: 10px;">X Position:</label>\n' +
+    '            <input type="text" style="margin-right: 10px;" id="x-pos" placeholder="">\n' +
+    '            <label style="color: black; margin-right: 10px;">Y Position:</label>\n' +
+    '            <input type="text" style="margin-right: 10px;" id="y-pos" placeholder="">\n' +
+    '        </div>\n' +
+    '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
+    '            <button class="btn btn-primary" ng-click="postMoveTo()"\n' +
+    '            type="button">Move Stylus</button>\n' +
+    '        </div>\n' +
+    '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
+    '            <button class="btn btn-success" ng-click="postMoveTo()"\n' +
+    '            type="button">Tap Screen</button>\n' +
+    '            <button class="btn btn-success"\n' +
+    '            type="button">Rotate Portrait</button>\n' +
+    '            <button class="btn btn-success"\n' +
+    '            type="button">Rotate Landscape</button>\n' +
+    '        </div>\n' +
+    '        <div class="row" style="margin-left: 10px;">\n' +
+    '            <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
+    '                background-color: transparent;\n' +
+    '                border: 0px none transparent;\n' +
+    '                padding: 0px;\n' +
+    '                overflow: hidden;\n' +
+    '                scrolling: no"></iframe>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '</div>\n' +
     '');
 }]);
 })();
