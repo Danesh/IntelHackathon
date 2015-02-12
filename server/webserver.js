@@ -45,7 +45,7 @@ app.get('/uptime', function(request, response) {
 });
 
 ///////////////////////////
-/// MONKEY BOT ENDPOINTS //
+/// ADB ENDPOINTS        //
 ///////////////////////////
 
 var adb = require('./adb.js');
@@ -67,5 +67,47 @@ io.on('disconnect', function () {
      console.log("Socket disconnected");
      adb.logcat.onDisconnect();
  });
+
+///////////////////////////
+/// MONKEY BOT ENDPOINTS //
+///////////////////////////
+
+var monkey = require('../hydra/monkey/monkeybot.js').monkeybot;
+
+app.post('/monkey/start', function(req, res) {
+  res.sendStatus(monkey.monkey_start() ? 200 : 500);
+})
+
+app.post('/monkey/stop', function(req, res) {
+  res.sendStatus(monkey.monkey_stop() ? 200 : 500);
+})
+
+app.post('/monkey/down', function(req, res) {
+  res.sendStatus(monkey.monkey_down() ? 200 : 500);
+})
+
+app.post('/monkey/up', function(req, res) {
+  res.sendStatus(monkey.monkey_up() ? 200 : 500);
+})
+
+app.post('/monkey/tap', function(req, res) {
+  res.sendStatus(monkey.monkey_tap() ? 200 : 500);
+})
+
+app.post('/monkey/rotate', function(req, res) {
+  res.sendStatus(monkey.monkey_rotate() ? 200 : 500);
+})
+
+app.post('/monkey/moveto', function(req, res) {
+  res.sendStatus(monkey.monkey_move_to() ? 200 : 500);
+})
+
+app.get('/monkey/stats', function(req, res) {
+  res.send(monkey.monkey_get_stats());
+})
+
+app.post('/monkey/flingshit', function(req, res) {
+  res.sendStatus(monkey.monkey_fling_shit() ? 200 : 500);
+})
 
 server.listen(8080);
