@@ -46,10 +46,14 @@ app.get('/uptime', function(request, response) {
 /// MONKEY BOT ENDPOINTS //
 ///////////////////////////
 
-var logcat = require('./logcat.js').logcat;
+var adb = require('./logcat.js');
 
 app.get('/logcat', function(req, res) {
-  res.send(logcat.getLogcat());
+  res.send(adb.logcat.getLogcat());
+})
+
+app.get('/power', function(req, res) {
+  adb.batteryStats.getChargeLevel(function(level) { res.send(level); });
 })
 
 app.listen(8080);

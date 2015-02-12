@@ -62,3 +62,32 @@ exports.logcat = function() {
 		parseStdout: parseStdout
 	}
 }();
+
+exports.batteryStats = function() {
+	var lastChargeLevel = -1;
+
+	var getChargeLevel = function(cb) {
+		var cmd = spawn(ADB_COMMAND, ['shell', 'cat /sys/class/power_supply/battery/uevent | grep POWER_SUPPLY_CAPACITY'])
+		cmd.stdout.on('data', function(rawdata) {
+			var chargeLevel = rawdata.toString().trim().split('=')[1];
+			if (!chargeLevel)
+				return;
+
+			lastChargeLevel = chargeLevel;
+			if (typeof(cb) == 'function') {
+				cb(lastChargeLevel);
+			}
+		})
+	}
+
+	var getLastChargeLevel = function() {
+		return lastChargeLevel;
+	}
+
+	//setInterval(getChargeLevel, 1000);
+
+	return {
+		getChargeLevel : getChargeLevel,
+		getLastChargeLevel : getLastChargeLevel
+	}
+}();
