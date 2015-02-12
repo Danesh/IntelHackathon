@@ -1,6 +1,8 @@
 var sys = require('sys')
 var run_cmd = require('child_process').exec;
 var express = require('express');
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var app = express();
 app.use(express.json());
 
@@ -52,4 +54,14 @@ app.get('/logcat', function(req, res) {
   res.send(logcat.getLogcat());
 })
 
-app.listen(8080);
+io.on('connection', function (socket) {
+  logcat.onConnect(socket);
+});
+
+io.on('disconnect', function () {
+     //This isn't working
+     console.log("Socket disconnected");
+     logcat.onDisconnect();
+ });
+
+server.listen(8080);

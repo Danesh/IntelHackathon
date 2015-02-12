@@ -14,7 +14,8 @@ exports.logcat = function() {
 	var first = 0;
 	var last = 0;
 	var lineBuffer = new Array();
-	
+	var socket = null;
+
 	var getLogcat = function() {
 		var buf = new Array();
 		while(first != last) {
@@ -24,9 +25,6 @@ exports.logcat = function() {
 				first = 0;
 			}
 		}
-		/*var json = {
-			msg: 'hello world'
-		}; */
 
 		json = JSON.stringify(buf);
 		return json;
@@ -34,21 +32,33 @@ exports.logcat = function() {
 
 	var parseStdout = function(data, _class) {
 		data.toString().split('\n').forEach(function(line) {
+			if (line != '') {
+				lineBuffer[last] = line;
+				last++;
 
-			lineBuffer[last] = line;
-			last++;
+				if (last == MAX_LINES) {
+					console.log("Overflow");
+					last = 0;
+				}
 
-			if (last == MAX_LINES) {
-				console.log("Overflow");
-				last = 0;
+				if (socket != null) {
+					socket.emit('logcat', { msg: line });
+				}
 			}
 		});
-
 	};
+
+	var onConnect = function(asocket) {
+		console.log("LOGCAT: socket connected");
+		socket = asocket;
+	}
+
+	var onDisconnect = function() {
+		socket = null;
+	}
 
 
 	var logcatcmd = spawn(ADB_COMMAND, ['logcat']);
-	
 	logcatcmd.stdout.on('data', function(data){parseStdout(data);});
 	logcatcmd.stderr.on('data', function(data){parseStdout(data, 'error');});
 
@@ -59,6 +69,8 @@ exports.logcat = function() {
 
 	return {
 		getLogcat: getLogcat,
-		parseStdout: parseStdout
+		parseStdout: parseStdout,
+		onConnect: onConnect,
+		onDisconnect: onDisconnect
 	}
 }();
