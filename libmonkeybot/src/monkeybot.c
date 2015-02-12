@@ -29,7 +29,7 @@
 #include "mraa/pwm.h"
 #include "monkeybot.h"
 
-#define STATS "If'm the juggernaut bitch!"
+#define STATS "I'm the juggernaut bitch!"
 
 /*            /
  *           /
@@ -46,21 +46,26 @@
 #define TILT_SERVO_PIN				3
 #define ROTATE_SERVO_PIN			9
 
-#define ARM1_MIN_PULSE_WIDTH 		400
+#define ARM1_MIN_PULSE_WIDTH 		700
 #define ARM1_MAX_PULSE_WIDTH 		1900
-#define ARM2_MIN_PULSE_WIDTH 		400
-#define ARM2_MAX_PULSE_WIDTH 		1900
-#define TILT_SERVO_PULSE_WIDTH_UP 	1000
+#define ARM2_MIN_PULSE_WIDTH 		500
+#define ARM2_MAX_PULSE_WIDTH 		2000
+#define TILT_SERVO_PULSE_WIDTH_UP 	1100
 #define TILT_SERVO_PULSE_WIDTH_DOWN	1500
 #define ROTATE_MIN_PULSE_WIDTH		800
 #define ROTATE_MAX_PULSE_WIDTH		2200
 #define ROTATE_MIN_ANGLE			0
 #define ROTATE_MAX_ANGLE			180
 
-mraa_pwm_context arm1Context;
-mraa_pwm_context arm2Context;
-mraa_pwm_context tiltContext;
-mraa_pwm_context rotateContext;
+#define ARM1_DEFAULT_PULSE_WIDTH	ARM1_MAX_PULSE_WIDTH
+#define ARM2_DEFAULT_PULSE_WIDTH	ARM2_MAX_PULSE_WIDTH
+#define TILT_DEFAULT_PULSE_WIDTH	TILT_SERVO_PULSE_WIDTH_UP
+#define ROTATE_DEFAULT_PULSE_WIDTH	ROTATE_MIN_PULSE_WIDTH
+
+mraa_pwm_context arm1Context = NULL;
+mraa_pwm_context arm2Context = NULL;
+mraa_pwm_context tiltContext = NULL;
+mraa_pwm_context rotateContext = NULL;
 
 int monkey_start(void) {
 	if ((arm1Context = mraa_pwm_init(ARM1_SERVO_PIN)) == NULL) return 0;
@@ -80,6 +85,11 @@ int monkey_start(void) {
 	if (mraa_pwm_enable(arm2Context, 1) != MRAA_SUCCESS) return 0;
 	if (mraa_pwm_enable(tiltContext, 1) != MRAA_SUCCESS) return 0;
 	if (mraa_pwm_enable(rotateContext, 1) != MRAA_SUCCESS) return 0;
+
+	mraa_pwm_pulsewidth_us(arm1Context, ARM1_DEFAULT_PULSE_WIDTH);
+	mraa_pwm_pulsewidth_us(arm2Context, ARM2_DEFAULT_PULSE_WIDTH);
+	mraa_pwm_pulsewidth_us(tiltContext, TILT_DEFAULT_PULSE_WIDTH);
+	mraa_pwm_pulsewidth_us(rotateContext, ROTATE_DEFAULT_PULSE_WIDTH);
 
 	return 1;
 }
@@ -120,7 +130,7 @@ int monkey_up(void) {
 int monkey_tap(void) {
 	if (tiltContext != NULL) {
 		mraa_pwm_pulsewidth_us(tiltContext, TILT_SERVO_PULSE_WIDTH_DOWN);
-		sleep(1);
+		usleep(300000);
 		mraa_pwm_pulsewidth_us(tiltContext, TILT_SERVO_PULSE_WIDTH_UP);
 		return 1;
 	}
