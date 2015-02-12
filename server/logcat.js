@@ -5,11 +5,11 @@
 */
 
 var Logcat = function () {};
+var ADB_COMMAND = process.platform == 'darwin' ? 'adb' : '../hydra/adb/adb'
 
 var util = require('util'),
 	spawn = require('child_process').spawn,
-	logcat = spawn('adb', ['logcat']);
-
+	logcat = spawn(ADB_COMMAND, ['logcat']);
 
 Logcat.prototype.getLogcat = function (){
 	var buf = new Array();
@@ -54,7 +54,7 @@ logcat.stdout.on('data', function(data){parseStdout(data);});
 logcat.stderr.on('data', function(data){parseStdout(data, 'error');});
 
 logcat.on('exit', function (code) {
-	logcat = spawn('adb', ['logcat']);
+	logcat = spawn(ADB_COMMAND, ['logcat']);
 });
 
 exports.Logcat = new Logcat();
