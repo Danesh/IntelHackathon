@@ -1,6 +1,11 @@
 <div class="cyngnmodule container-fluid">
 <h1>camera view</h1>
 
-<iframe src="camera.html" width="400" height="300" frameborder="0"></iframe>
+<iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+    scrolling: no"></iframe>
 
 </div>
