@@ -144,3 +144,24 @@ int monkey_move_to(int x, int y) {
 char* monkey_get_stats(void) {
 	return STATS;
 }
+
+int monkey_fling_shit(void) {
+	return 0;
+}
+//main(int argc, char **argv)
+//{
+//	int i;
+//    mraa_pwm_context pwm;
+//    pwm = mraa_pwm_init(3);
+//    mraa_pwm_period_ms(pwm, 20);
+//    mraa_pwm_enable(pwm, 1);
+//    while (1) {
+//        for (i = 400; i < 1900; i++) {
+//        	mraa_pwm_pulsewidth_us(pwm, i);
+//            usleep(10000);
+//        }
+//    }
+//
+//    return 0;
+//}
+
