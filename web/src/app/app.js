@@ -1,9 +1,8 @@
-angular.module( 'angularSeed', [
+angular.module( 'cyngnIoT', [
   'common-templates',
-  'angularSeed.home',
-  'angularSeed.header',
-  'ui.router',
-  'webcam'
+  'cyngnIoT.home',
+  'cyngnIoT.header',
+  'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {

@@ -1,6 +1,8 @@
 var sys = require('sys')
 var run_cmd = require('child_process').exec;
 var express = require('express');
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var app = express();
 app.use(express.json());
 
@@ -46,10 +48,24 @@ app.get('/uptime', function(request, response) {
 /// MONKEY BOT ENDPOINTS //
 ///////////////////////////
 
-var logcat = require('./logcat.js').logcat;
+var adb = require('./adb.js');
 
 app.get('/logcat', function(req, res) {
-  res.send(logcat.getLogcat());
+  res.send(adb.logcat.getLogcat());
 })
 
-app.listen(8080);
+app.get('/power', function(req, res) {
+  adb.batteryStats.getChargeLevel(function(level) { res.send(level); });
+})
+
+io.on('connection', function (socket) {
+  adb.logcat.onConnect(socket);
+});
+
+io.on('disconnect', function () {
+     //This isn't working
+     console.log("Socket disconnected");
+     adb.logcat.onDisconnect();
+ });
+
+server.listen(8080);
