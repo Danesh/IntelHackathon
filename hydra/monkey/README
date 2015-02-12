@@ -1,0 +1,7 @@
+README
+
+To build
+
+gcc -Wall monkey_bot_source.c -shared -lmraa <etc> -o libmonkeybot.so
+
+require("monkeybot")
