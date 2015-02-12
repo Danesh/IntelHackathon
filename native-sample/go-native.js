@@ -1,8 +1,8 @@
 // Library that talks to native code
 
-var ffi = require("ffi");
+var ffi = require("ffi")
 
-var libutil = ffi.Library('/home/root/hack/IntelHackathon/native-sample/libutil.so', {
+var libutil = ffi.Library(process.cwd() + '/libutil.so', {
     "get_mraa_version": [ 'string', [] ]
 });
 
