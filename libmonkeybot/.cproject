@@ -40,7 +40,7 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.404123192" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.955142527" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker">
-								<option id="gnu.c.link.option.ldflags.1324815053" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="${LDFLAGS} -lmraa" valueType="string"/>
+								<option id="gnu.c.link.option.ldflags.1324815053" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="${LDFLAGS} -lmraa -lm" valueType="string"/>
 								<option id="gnu.c.link.option.libs.309372273" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
 								<option id="gnu.c.link.option.paths.1738131345" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="${DEVKIT_HOME}/devkit-x86/sysroots/i586-poky-linux/usr/lib"/>
