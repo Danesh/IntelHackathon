@@ -77,6 +77,23 @@ io.on('disconnect', function () {
 
 var monkey = require('../hydra/monkey/monkeybot.js').monkeybot;
 
+// Script runner
+app.post('/monkey/script', function(req, res) {
+    //res.send(monkey.monkey_run_script() ? 200 : 500);
+    var scr = "FIXME Dunno how to read script from req";
+    res.status(200)
+    res.write("Sending script to monkey bot...<br/>")
+    monkey.monkey_run_script(
+        scr,
+        function(progress_str) { // Progress function
+            res.write(progress_str + "<br/>")
+        },
+        function() { // done function
+            res.end();
+        })
+})
+
+// Individual commands
 app.post('/monkey/start', function(req, res) {
   res.sendStatus(monkey.monkey_start() ? 200 : 500);
 })

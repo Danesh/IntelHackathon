@@ -22,6 +22,38 @@ exports.monkeybot = function() {
     // API calls: Note these are all blocking functions
     //
 
+    var monkey_run_script = function(script, progress_fn, end_fn) {
+        // Breaks up incoming script into lines, and executes function corresponding
+        // to each line
+
+        var lines = script.split('\n')
+
+        for (var i=0; i<lines.length; i++) {
+            var line = lines[i].trim() // one command
+            if (!line) {
+                continue;
+            }
+            console.log("> Parsed line: " + line);
+            var tokens = line.split(' ')
+            var func = tokens[0] // the monkeybot function
+            console.log("> Parsed function: " + func);
+            var args = tokens.splice(1).filter(function(e) { return !(!e); }) // arguments if any
+            console.log("> Parsed args: " + args);
+
+            if (funcs[func]) {
+                progress_fn("Running function: " + func)
+                progress_fn("Parsed args: " + args);
+                funcs[func].apply(null, args);
+            } else {
+                progress_fn("Skipping UNKNOWN function: " + func)
+                console.log("Unknown function: " + func);
+            }
+        }
+
+        progress_fn("DONE!");
+        end_fn()
+    }
+
     var monkey_start = function() {
         console.log("Invoking " + arguments.callee.name)
         return libmonkey.monkey_start()
@@ -73,6 +105,7 @@ exports.monkeybot = function() {
     }
 
     return {
+        monkey_run_script: monkey_run_script,
         monkey_start: monkey_start,
         monkey_stop: monkey_stop,
         monkey_down: monkey_down,
