@@ -14,41 +14,54 @@ var libmonkey = ffi.Library(process.cwd() + '/libmonkeybot.so', {
     "monkey_get_stats": [ 'string', [] ]
 });
 
-//
-// API calls: Note these are all blocking functions
-//
+exports.monkeybot = function() {
+    //
+    // API calls: Note these are all blocking functions
+    //
 
-function monkey_down() {
-    console.log("Invoking " + arguments.callee.name)
-    return libmonkey.monkey_down()
-}
+    var monkey_down = function() {
+        console.log("Invoking " + arguments.callee.name)
+        return libmonkey.monkey_down()
+    }
 
-function monkey_up() {
-    console.log("Invoking " + arguments.callee.name)
-    return libmonkey.monkey_up()
-}
+    var monkey_up = function() {
+        console.log("Invoking " + arguments.callee.name)
+        return libmonkey.monkey_up()
+    }
 
-function monkey_rotate_right(angle) {
-    console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
-    return libmonkey.monkey_rotate_right(angle)
-}
+    var monkey_rotate_right = function(angle) {
+        console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
+        return libmonkey.monkey_rotate_right(angle)
+    }
 
-function monkey_rotate_left(angle) {
-    console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
-    return libmonkey.monkey_rotate_left(angle)
-}
+    var monkey_rotate_left = function(angle) {
+        console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
+        return libmonkey.monkey_rotate_left(angle)
+    }
 
-function monkey_move_to(x, y) {
-    console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
-    return libmonkey.monkey_move_to(x, y)
-}
+    var monkey_move_to = function(x, y) {
+        console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
+        return libmonkey.monkey_move_to(x, y)
+    }
 
-function monkey_power_hold_at(level) {
-    console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
-    return libmonkey.monkey_power_hold_at(level)
-}
+    var monkey_power_hold_at = function(level) {
+        console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
+        return libmonkey.monkey_power_hold_at(level)
+    }
 
-function monkey_get_stats() {
-    console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
-    return libmonkey.monkey_get_stats()
-}
+    var monkey_get_stats = function() {
+        console.log("Invoking " + arguments.callee.name + " with " + JSON.stringify(arguments))
+        return libmonkey.monkey_get_stats()
+    }
+
+    return {
+        monkey_down: monkey_down,
+        monkey_up: monkey_up,
+        monkey_rotate_right: monkey_rotate_right,
+        monkey_rotate_left: monkey_rotate_left,
+        monkey_move_to: monkey_move_to,
+        monkey_power_hold_at: monkey_power_hold_at,
+        monkey_get_stats: monkey_get_stats
+    }
+}()
+
