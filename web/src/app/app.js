@@ -1,13 +1,10 @@
 angular.module( 'cyngnIoT', [
   'common-templates',
-  'cyngnIoT.home',
   'cyngnIoT.header',
   'ui.router',
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
-
   $stateProvider
   .state('home', {
     url: '/home',

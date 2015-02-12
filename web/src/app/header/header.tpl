@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#!/home">Cyanogen Monkey</a>
+            <a class="navbar-brand" href="index.html">Cyanogen Monkey</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{{isActive('home')}}"><a href="#!/home">home</a></li>
-                <li class="{{isActive('camera')}}"><a href="#!/camera">camera view</a></li>
-                <li class="{{isActive('adb')}}"><a href="#!/adb">adb logcat</a></li>
-                <li class="{{isActive('script')}}"><a href="#!/script">script logs</a></li>
-                <li class="{{isActive('manual')}}"><a href="#!/manual">manual controls</a></li>
+                <li><a href="index.html">home</a></li>
+                <li class="{{isActive('camera')}}"><a href="app.html#!/camera">camera view</a></li>
+                <li class="{{isActive('adb')}}"><a href="app.html#!/adb">adb logcat</a></li>
+                <li class="{{isActive('script')}}"><a href="app.html#!/script">script logs</a></li>
+                <li class="{{isActive('manual')}}"><a href="app.html#!/manual">manual controls</a></li>
             </ul>
         </div>
     </div>

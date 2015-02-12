@@ -1,3 +1,4 @@
+console.log('booting up!')
 var sys = require('sys')
 var run_cmd = require('child_process').exec;
 var express = require('express');
@@ -16,12 +17,14 @@ function forCors(response) {
   return response;
 }
 
+console.log('here we go')
 app.options('/ping', function(request, response) {
   response = forCors(response);
   response.send( 200 );
 });
 
 app.get('/ping', function(request, response) {
+  console.log('servicing ping')
   var json = {
     msg: 'hello world'
   };
@@ -110,4 +113,7 @@ app.post('/monkey/flingshit', function(req, res) {
   res.sendStatus(monkey.monkey_fling_shit() ? 200 : 500);
 })
 
-server.listen(8080);
+app.listen(8080);
+server.listen(8081);
+
+console.log('up and running!')

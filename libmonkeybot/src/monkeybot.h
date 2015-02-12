@@ -24,4 +24,6 @@ int monkey_move_to(int x, int y);
 
 char* monkey_get_stats(void);
 
+int monkey_fling_shit(void);
+
 #endif /* MONKEYBOT_H_ */

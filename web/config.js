@@ -21,7 +21,6 @@ module.exports = {
   vendor: {
     js: {
       files: [
-        './components/socket/**',
         './components/camera/**',
         './bower_components/jquery/dist/jquery.js',
         './bower_components/angular/angular.js',
