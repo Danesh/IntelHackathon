@@ -85,6 +85,7 @@ app.post('/monkey/script', function(req, res) {
     //res.send(monkey.monkey_run_script() ? 200 : 500);
     // var scr = "monkey_fling_shit";
     // res.status(200)
+    // res.setHeader('Content-Type': 'text/plain; charset=utf-8'
     // res.write("Sending script to monkey bot...<br/>")
     // monkey.monkey_run_script(
     //     scr,
@@ -97,6 +98,24 @@ app.post('/monkey/script', function(req, res) {
 
   res.sendStatus(monkey.monkey_fling_shit() ? 200 : 500);
 })
+
+// Script runner that might work
+app.post('/monkey/script2', function(req, res) {
+    res.send(monkey.monkey_run_script() ? 200 : 500);
+    var scr = req.body;
+    res.status(200)
+    res.setHeader('Content-Type': 'text/plain; charset=utf-8'
+    res.write("Sending script to monkey bot...<br/>")
+    monkey.monkey_run_script(
+        scr,
+        function(progress_str) { // Progress function
+            res.write(progress_str + "<br/>")
+        },
+        function() { // done function
+            res.end();
+        })
+})
+
 
 // Individual commands
 app.post('/monkey/start', function(req, res) {
