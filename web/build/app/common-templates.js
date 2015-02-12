@@ -23,37 +23,6 @@ try {
   module = angular.module('common-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('app/camera/camera.tpl',
-    '<div class="cyngnmodule container-fluid">\n' +
-    '<h1>camera view</h1>\n' +
-    '\n' +
-    '<iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
-    '    -moz-transform: scale(1.5, 1.5);\n' +
-    '    -webkit-transform: scale(1.5, 1.5);\n' +
-    '    -o-transform: scale(1.5, 1.5);\n' +
-    '    -ms-transform: scale(1.5, 1.5);\n' +
-    '    transform: scale(1.5, 1.5);\n' +
-    '    -moz-transform-origin: top left;\n' +
-    '    -webkit-transform-origin: top left;\n' +
-    '    -o-transform-origin: top left;\n' +
-    '    -ms-transform-origin: top left;\n' +
-    '    transform-origin: top left;\n' +
-    '    padding: 0px;\n' +
-    '    overflow: hidden;\n' +
-    '    scrolling: no"></iframe>\n' +
-    '\n' +
-    '</div>\n' +
-    '');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('common-templates');
-} catch (e) {
-  module = angular.module('common-templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('app/footer/footer.tpl',
     '<div class="seed-footer">\n' +
     '  &copy;2015 Cyanogen Inc.\n' +
@@ -93,6 +62,37 @@ module.run(['$templateCache', function($templateCache) {
     '        </div>\n' +
     '    </div>\n' +
     '</nav>\n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('common-templates');
+} catch (e) {
+  module = angular.module('common-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('app/camera/camera.tpl',
+    '<div class="cyngnmodule container-fluid">\n' +
+    '<h1>camera view</h1>\n' +
+    '\n' +
+    '<iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
+    '    -moz-transform: scale(1.5, 1.5);\n' +
+    '    -webkit-transform: scale(1.5, 1.5);\n' +
+    '    -o-transform: scale(1.5, 1.5);\n' +
+    '    -ms-transform: scale(1.5, 1.5);\n' +
+    '    transform: scale(1.5, 1.5);\n' +
+    '    -moz-transform-origin: top left;\n' +
+    '    -webkit-transform-origin: top left;\n' +
+    '    -o-transform-origin: top left;\n' +
+    '    -ms-transform-origin: top left;\n' +
+    '    transform-origin: top left;\n' +
+    '    padding: 0px;\n' +
+    '    overflow: hidden;\n' +
+    '    scrolling: no"></iframe>\n' +
+    '\n' +
+    '</div>\n' +
     '');
 }]);
 })();
@@ -209,19 +209,19 @@ module.run(['$templateCache', function($templateCache) {
     '        </div>\n' +
     '        <div class="row" style="margin-top: 10px; margin-left: 10px;">\n' +
     '            <button class="btn btn-success"\n' +
-    '            type="button" ng-click="tapscreen()">Tap Screen</button>\n' +
+    '            type="button">Tap Screen</button>\n' +
     '            <button class="btn btn-success"\n' +
     '            type="button">Rotate Portrait</button>\n' +
     '            <button class="btn btn-success"\n' +
     '            type="button">Rotate Landscape</button>\n' +
     '        </div>\n' +
     '        <div class="row" style="margin-left: 10px;">\n' +
-    '            <!-- <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
+    '            <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="\n' +
     '                background-color: transparent;\n' +
     '                border: 0px none transparent;\n' +
     '                padding: 0px;\n' +
     '                overflow: hidden;\n' +
-    '                scrolling: no"></iframe> -->\n' +
+    '                scrolling: no"></iframe>\n' +
     '        </div>\n' +
     '    </div>\n' +
     '</div>\n' +
@@ -239,6 +239,15 @@ module.run(['$templateCache', function($templateCache) {
   $templateCache.put('app/script/script.tpl',
     '<div class="cyngnmodule container-fluid">\n' +
     '<h1>script logs</h1>\n' +
+    '\n' +
+    '<div class="row">\n' +
+    '  <div class="col-md-6">\n' +
+    '    <textarea class="form-control" rows="8"></textarea>\n' +
+    '    <br/>\n' +
+    '    <button class="btn btn-success"\n' +
+    '    type="button">Submit</button>\n' +
+    '  </div>\n' +
+    '</div>\n' +
     '</div>\n' +
     '');
 }]);

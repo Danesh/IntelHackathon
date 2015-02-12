@@ -1,19 +1,8 @@
 angular.module( 'cyngnIoT.manual', [])
 
-.controller( 'ManualCtrl', ['$scope', '$location', '$http', function ManualCtrl( $scope, $location,
-$http) {
-  $scope.path = $location.path().replace('/', '');
-  $scope.isActive = function( path ) {
-    if ($scope.path === path) {
-      return 'active';
-    }
-    else {
-      return '';
-    }
-  }
-
+.controller( 'ManualCtrl', ['$scope', '$http', function ManualCtrl( $scope, $http ) {
   $scope.tapscreen = function() {
-    $http.post('http://localhost:8080/monkey/tap');
+    $http.post('http://10.65.23.129:8080/monkeyup');
   }
 
   $scope.postMoveTo = function() {
