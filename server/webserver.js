@@ -83,7 +83,7 @@ var monkey = require('../hydra/monkey/monkeybot.js').monkeybot;
 // Script runner
 app.post('/monkey/script', function(req, res) {
     //res.send(monkey.monkey_run_script() ? 200 : 500);
-    var scr = "FIXME Dunno how to read script from req";
+    var scr = "monkey_fling_shit";
     res.status(200)
     res.write("Sending script to monkey bot...<br/>")
     monkey.monkey_run_script(
