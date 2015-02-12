@@ -15,7 +15,7 @@
     <script src="vendor/socket-io.js"></script>
     <script src="vendor/jquery.js"></script>
     <script>
-      var socket = io('http://localhost:8081');
+      var socket = io('http://10.65.23.129:8081');
       socket.on('logcat', function(data){
         $('#messages').prepend($('<li>').text(data.msg));
       });

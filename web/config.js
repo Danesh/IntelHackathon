@@ -22,11 +22,11 @@ module.exports = {
     js: {
       files: [
         './components/camera/**',
+        './components/socket/**',
         './bower_components/jquery/dist/jquery.js',
         './bower_components/angular/angular.js',
         './bower_components/angular-ui-router/release/angular-ui-router.js',
-        './bower_components/bootstrap/dist/js/bootstrap.js',
-        './bower_components/angular-socket-io/socket.js'
+        './bower_components/bootstrap/dist/js/bootstrap.js'
       ],
       target: 'vendor'
     },
