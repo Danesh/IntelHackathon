@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <math.h>
 
 #include "mraa/pwm.h"
 #include "monkeybot.h"
@@ -56,6 +57,10 @@
 #define ROTATE_MAX_PULSE_WIDTH		2200
 #define ROTATE_MIN_ANGLE			0
 #define ROTATE_MAX_ANGLE			180
+#define PI 							3.14
+
+#define ARM1_LENGTH					75	// mm
+#define ARM2_LENGTH					80	// mm
 
 #define ARM1_DEFAULT_PULSE_WIDTH	ARM1_MAX_PULSE_WIDTH
 #define ARM2_DEFAULT_PULSE_WIDTH	ARM2_MAX_PULSE_WIDTH
@@ -147,7 +152,34 @@ int monkey_rotate(int angle) {
 	return 0;
 }
 
+void move_arm(mraa_pwm_context ctx, float angle) {
+	float factor = (float) (ROTATE_MAX_PULSE_WIDTH - ROTATE_MIN_PULSE_WIDTH)
+					/ (ROTATE_MAX_ANGLE - ROTATE_MIN_ANGLE);
+
+	mraa_pwm_pulsewidth_us(ctx, (int) (angle * factor));
+}
+
 int monkey_move_to(int x, int y) {
+	// alias arm lengths
+	float a = (float) ARM1_LENGTH;
+	float b = (float) ARM2_LENGTH;
+
+	// distance from origin
+	float z = sqrt( sq(x) + sq(y) );
+	// angle XY makes w/ the horizontal ; slope
+	float phi = atan(y/x) * (180 / PI);
+	// B : angle across from b in the triangle formed by a , b and XY
+	float B = acos( (sq(a) + sq(z) - sq(b)) / (2*a*z) ) * (180/PI);
+
+	// **ASSUMING** an elbow-up configuration for the robot arm
+	float theta1 = B + phi;
+	float theta2 = acos( (sq(a) + sq(b) - sq(z)) / (2*a*b) ) * (180/PI);
+
+	// move arms
+	move_arm(arm1Context, theta1);
+	sleep(1);
+	move_arm(arm2Context, theta2);
+
 	return 0;
 }
 
@@ -158,6 +190,7 @@ char* monkey_get_stats(void) {
 int monkey_fling_shit(void) {
 	return 0;
 }
+
 //main(int argc, char **argv)
 //{
 //	int i;
