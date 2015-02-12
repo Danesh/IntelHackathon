@@ -192,13 +192,13 @@ char* monkey_get_stats(void) {
 int monkey_fling_shit(void) {
 	monkey_start();
 	sleep(1);
-	mraa_pwm_pulsewidth_us(arm1Context, ((ARM1_MAX_PULSE_WIDTH - ARM1_MIN_PULSE_WIDTH) / 2));
-	mraa_pwm_pulsewidth_us(arm2Context, ((ARM2_MAX_PULSE_WIDTH - ARM2_MIN_PULSE_WIDTH) / 2));
+	mraa_pwm_pulsewidth_us(arm1Context, ARM1_DEFAULT_PULSE_WIDTH - 500);
+	mraa_pwm_pulsewidth_us(arm2Context, ARM2_DEFAULT_PULSE_WIDTH - 500);
 	sleep(1);
 	monkey_tap();
 	sleep(1);
-	mraa_pwm_pulsewidth_us(arm1Context, ((ARM1_MAX_PULSE_WIDTH - ARM1_MIN_PULSE_WIDTH) / 3));
-	mraa_pwm_pulsewidth_us(arm2Context, ((ARM2_MAX_PULSE_WIDTH - ARM2_MIN_PULSE_WIDTH) / 4));
+	mraa_pwm_pulsewidth_us(arm1Context, ARM1_DEFAULT_PULSE_WIDTH - 250);
+	mraa_pwm_pulsewidth_us(arm2Context, ARM2_DEFAULT_PULSE_WIDTH - 250);
 	sleep(1);
 	monkey_tap();
 	sleep(1);
