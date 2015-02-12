@@ -4,6 +4,7 @@
    Original source: https://www.npmjs.com/package/logcat
 */
 
+var ADB_COMMAND = process.platform == 'darwin' ? 'adb' : '../hydra/adb/adb'
 
 var util = require('util'),
 	colors = require('colors'),
@@ -15,7 +16,7 @@ var util = require('util'),
 		'warning': ['warning', 'W\/Web Console'],
 		'info': ['info']
 	},
-	logcat = spawn('adb', ['logcat']);
+	logcat = spawn(ADB_COMMAND, ['logcat']);
 	app.listen(8080);
 
 app.http().io();
@@ -118,7 +119,7 @@ logcat.stdout.on('data', function(data){parseStdout(data);});
 logcat.stderr.on('data', function(data){parseStdout(data, 'error');});
 
 logcat.on('exit', function (code) {
-	logcat = spawn('adb', ['logcat']);
+	logcat = spawn(ADB_COMMAND, ['logcat']);
 });
 
 module.exports = app;
