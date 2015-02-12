@@ -9,7 +9,7 @@ var libmonkey = ffi.Library(process.cwd() + '/libmonkeybot.so', {
     "monkey_stop": [ 'bool', [] ],
     "monkey_down": [ 'bool', [] ],
     "monkey_up": [ 'bool', [] ],
-    "monkey_tap": [ 'bool', [] ]
+    "monkey_tap": [ 'bool', [] ],
     "monkey_rotate": [ 'bool', [ 'int' ] ],
     "monkey_move_to": [ 'bool', [ 'int', 'int' ] ],
     // "monkey_power_hold_at": [ 'bool', [ 'int' ] ],
