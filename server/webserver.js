@@ -46,7 +46,7 @@ app.get('/uptime', function(request, response) {
 /// MONKEY BOT ENDPOINTS //
 ///////////////////////////
 
-var logcat = require('./logcat.js').Logcat;
+var logcat = require('./logcat.js').logcat;
 
 app.get('/logcat', function(req, res) {
   res.send(logcat.getLogcat());

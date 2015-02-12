@@ -4,14 +4,14 @@
    Original source: https://www.npmjs.com/package/logcat
 */
 
-var Logcat = function () {};
+var logcat = function () {};
 var ADB_COMMAND = process.platform == 'darwin' ? 'adb' : '../hydra/adb/adb'
 
 var util = require('util'),
 	spawn = require('child_process').spawn,
-	logcat = spawn(ADB_COMMAND, ['logcat']);
+	logcatcmd = spawn(ADB_COMMAND, ['logcat']);
 
-Logcat.prototype.getLogcat = function (){
+logcat.prototype.getLogcat = function (){
 	var buf = new Array();
 	while(first != last) {
 		 buf.push(lineBuffer[first]);
@@ -49,12 +49,12 @@ var parseStdout = function(data, _class) {
 };
 
 
-logcat.stdout.on('data', function(data){parseStdout(data);});
+logcatcmd.stdout.on('data', function(data){parseStdout(data);});
+logcatcmd.stderr.on('data', function(data){parseStdout(data, 'error');});
 
-logcat.stderr.on('data', function(data){parseStdout(data, 'error');});
-
-logcat.on('exit', function (code) {
-	logcat = spawn(ADB_COMMAND, ['logcat']);
+logcatcmd.on('exit', function (code) {
+	logcatcmd = spawn(ADB_COMMAND, ['logcat']);
+	// do we need to re-set-up the above two stdio callbacks? appears no empirically but i am suspicious - sarbs
 });
 
-exports.Logcat = new Logcat();
+exports.logcat = new logcat();
