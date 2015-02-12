@@ -12,20 +12,20 @@
             type="button">Move Stylus</button>
         </div>
         <div class="row" style="margin-top: 10px; margin-left: 10px;">
-            <button class="btn btn-success" ng-click="postMoveTo()"
-            type="button">Tap Screen</button>
+            <button class="btn btn-success"
+            type="button" ng-click="tapscreen()">Tap Screen</button>
             <button class="btn btn-success"
             type="button">Rotate Portrait</button>
             <button class="btn btn-success"
             type="button">Rotate Landscape</button>
         </div>
         <div class="row" style="margin-left: 10px;">
-            <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="
+            <!-- <iframe seamless src="camera.html" width="640" height="480" frameborder="0" style="
                 background-color: transparent;
                 border: 0px none transparent;
                 padding: 0px;
                 overflow: hidden;
-                scrolling: no"></iframe>
+                scrolling: no"></iframe> -->
         </div>
     </div>
 </div>

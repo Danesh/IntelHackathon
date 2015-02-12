@@ -30,6 +30,8 @@
 #include "mraa/pwm.h"
 #include "monkeybot.h"
 
+#define sq(a) ((a) * (a))
+
 #define STATS "I'm the juggernaut bitch!"
 
 /*            /

@@ -1,0 +1,37 @@
+<html><head>
+<script>
+  .camera-container {
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  #canvas-video {
+    width: 640px;
+    height: 480px;
+    border: 1px solid #ccc;
+  }
+</script>
+<script src="vendor/jsmpg.js"></script>
+</head>
+<body>
+<div class="camera-container">
+  <canvas id="canvas-video" width="640" height="480"></canvas>
+</div>
+
+
+<script type="text/javascript">
+  // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
+  var wsUrl = 'ws://10.65.23.129:8092/';
+
+  // Show loading notice
+  var canvas = document.getElementById('canvas-video');
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#333';
+  ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+
+  // Start the player
+  var client = new WebSocket(wsUrl);
+  var player = new jsmpeg(client, { canvas:canvas });
+</script>
+</body>
+</html>

@@ -2,10 +2,12 @@ angular.module( 'cyngnIoT', [
   'common-templates',
   'cyngnIoT.header',
   'cyngnIoT.manual',
-  'ui.router',
+  'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
+
+
   $stateProvider
   .state('home', {
     url: '/home',
@@ -15,8 +17,7 @@ angular.module( 'cyngnIoT', [
         controller: 'HeaderCtrl'
       },
       'main': {
-        templateUrl: 'app/home/home.tpl',
-        controller: 'HomeCtrl'
+        templateUrl: 'app/home/home.tpl'
       },
       'footer': {
         templateUrl: 'app/footer/footer.tpl'
@@ -102,6 +103,7 @@ angular.module( 'cyngnIoT', [
   $locationProvider
     .html5Mode(false)
     .hashPrefix('!');
+  $urlRouterProvider.otherwise("/home");
 })
 
 .run( function run () {

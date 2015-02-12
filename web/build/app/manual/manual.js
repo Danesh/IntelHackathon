@@ -12,6 +12,10 @@ $http) {
     }
   }
 
+  $scope.tapscreen = function() {
+    $http.post('http://localhost:8080/monkey/tap');
+  }
+
   $scope.postMoveTo = function() {
       var x = $('#x-pos').text();
       var y = $('#y-pos').text();
