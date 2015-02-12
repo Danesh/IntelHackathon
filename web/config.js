@@ -11,7 +11,7 @@ module.exports = {
     dist:   './dist'
   },
   files: {
-    html:   'index.html',
+    html:   '*.html',
     tpl:    '**/*.tpl',
     less:   '**/*.less',
     css:    '**/*.css',
@@ -21,11 +21,11 @@ module.exports = {
   vendor: {
     js: {
       files: [
+        './components/cam/**',
         './bower_components/jquery/dist/jquery.js',
         './bower_components/angular/angular.js',
         './bower_components/angular-ui-router/release/angular-ui-router.js',
-        './bower_components/bootstrap/dist/js/bootstrap.js',
-        './bower_components/webcam-directive/dist/webcam.min.js'
+        './bower_components/bootstrap/dist/js/bootstrap.js'
       ],
       target: 'vendor'
     },
