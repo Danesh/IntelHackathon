@@ -1,21 +1,21 @@
 'use strict';
 
-var config        = global.config;
 var gulp          = require('gulp');
 var concat        = require('gulp-concat');
-var foldersSrc    = config.folders.build;
-var foldersDist   = config.folders.dist;
-var filesJs       = config.files.js;
-var angularPrefix = config.angular.prefix;
-var angularSuffix = config.angular.suffix;
+var config        = global.config;
 var packageJson   = global.packageJson;
-var angularJs     = packageJson.name + '-' + packageJson.version + '.js';
+var src           = config.app.src;
+var dist          = config.app.dist;
+var angularPrefix = config.app.prefix;
+var angularSuffix = config.app.suffix;
+var angularJsFile = packageJson.name + '-' +
+                    packageJson.version + '.js';
 
 gulp.task('concat', function(){
   return gulp.src( [ angularPrefix,
-              foldersSrc + '/app/' + filesJs,
-              foldersSrc + '/common/' + filesJs,
-              angularSuffix ] )
-    .pipe( concat( angularJs ) )
-    .pipe( gulp.dest( foldersDist ) );
+      src.folder + '/app/**/*.js',
+      src.folder + '/common/**/*.js',
+      angularSuffix ] )
+    .pipe( concat( angularJsFile ) )
+    .pipe( gulp.dest( dist.folder + '/js') );
 });
